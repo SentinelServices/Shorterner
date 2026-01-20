@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Share+Tech+Mono&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+
+  /* Cyberpunk Palette */
+  --cyber-primary: 160 100% 50%;    /* Neon Green */
+  --cyber-secondary: 190 100% 50%;  /* Neon Cyan */
+  --cyber-accent: 320 100% 50%;     /* Neon Pink/Magenta */
+  --cyber-danger: 0 100% 50%;       /* Neon Red */
+  
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  
+  /* Mapped to Tailwind variables */
+  --primary: var(--cyber-primary);
+  --primary-foreground: 144.9 80.4% 10%;
+  
+  --secondary: var(--cyber-secondary);
+  --secondary-foreground: 240 5.9% 10%;
+  
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  
+  --accent: 240 3.7% 15.9%;
+  --accent-foreground: 0 0% 98%;
+  
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --ring: 160 100% 50%; /* Focus ring matches primary */
+  
+  --radius: 0px; /* Sharp corners for cyberpunk */
+
+  /* Custom Fonts */
+  --font-display: 'Orbitron', sans-serif;
+  --font-mono: 'Share Tech Mono', monospace;
+  --font-body: 'Inter', sans-serif;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: var(--font-body);
+    background-image: 
+      linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), 
+      linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+    background-size: 100% 2px, 3px 100%;
+    overflow-x: hidden;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-display);
+    @apply uppercase tracking-widest;
+  }
+}
+
+@layer utilities {
+  .font-display { font-family: var(--font-display); }
+  .font-mono { font-family: var(--font-mono); }
+  
+  /* Cyberpunk Glows */
+  .glow-primary {
+    box-shadow: 0 0 10px hsla(var(--cyber-primary), 0.5), 0 0 20px hsla(var(--cyber-primary), 0.3);
+  }
+  .glow-danger {
+    box-shadow: 0 0 10px hsla(var(--cyber-danger), 0.5), 0 0 20px hsla(var(--cyber-danger), 0.3);
+  }
+  .text-shadow-glow {
+    text-shadow: 0 0 5px currentColor;
+  }
+  
+  /* Grid Background */
+  .bg-grid {
+    background-size: 40px 40px;
+    background-image: 
+      linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+  }
+}
+
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: hsl(var(--background)); 
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted)); 
+  border: 1px solid hsl(var(--primary));
+}
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary)); 
+}
